@@ -38,3 +38,22 @@ management:
   tracing:
     sampling:
       probability: 1.0
+#Circuit Breaker
+resilience4j:
+  circuitbreaker:
+    instances:
+      productservice:
+        registerHealthIndicator: true
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+        slowCallRateThreshold: 50
+        slowCallDurationThreshold: 2s
+        slidingWindowType: count_based
+  # timelimiter:
+  #   instances:
+  #     orderServiceCB:
+  #       timeoutDuration: 3s
