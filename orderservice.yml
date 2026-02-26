@@ -34,7 +34,7 @@ management:
       show-details: always
   health:
     circuitbreakers:
-      enable: true
+      enabled: true
   tracing:
     sampling:
       probability: 1.0
